@@ -48,7 +48,7 @@ public class BlacklistInterceptor implements HandlerInterceptor {
             Integer times = this.cacheUtil.get(ip, url);
             if (times != null) {
                 //如果此ip对某个url访问在一分钟内达到100次则加入黑名单
-                if (times > MAX_TIMES) {
+                if (times >= MAX_TIMES) {
                     Calendar calendar = Calendar.getInstance();
                     Date creatTime = calendar.getTime();
                     Blacklist newBlacklist = new Blacklist();
